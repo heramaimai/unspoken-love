@@ -160,12 +160,78 @@ textarea {
   margin: 20px 0 0;
 }
 
+.home-auth-corner {
+  left: max(16px, env(safe-area-inset-left));
+  max-width: min(320px, calc(100vw - 32px));
+  position: fixed;
+  top: calc(env(safe-area-inset-top) + 16px);
+  z-index: 3;
+}
+
+.home-ambient-zone {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 34px 0 22px;
+  min-height: 92px;
+}
+
+.ambient-sound-corner {
+  bottom: calc(env(safe-area-inset-bottom) + 20px);
+  position: fixed;
+  right: 20px;
+  z-index: 2;
+}
+
+.ambient-sound-center {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  text-align: center;
+}
+
+.ambient-sound-hint {
+  color: rgba(232, 228, 220, 0.46);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  line-height: 1.75;
+  margin: 0;
+  max-width: 320px;
+}
+
+.ambient-sound {
+  z-index: 2;
+}
+
+.ambient-sound-btn {
+  backdrop-filter: blur(12px);
+  background: rgba(11, 13, 18, 0.58);
+  border: 1px solid rgba(196, 168, 130, 0.28);
+  border-radius: 999px;
+  box-shadow: 0 0 32px rgba(196, 168, 130, 0.08);
+  color: rgba(219, 201, 168, 0.9);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  padding: 10px 18px;
+  transform: none;
+}
+
+.ambient-sound-btn:hover:not(:disabled) {
+  background: rgba(196, 168, 130, 0.12);
+  border-color: rgba(196, 168, 130, 0.38);
+  box-shadow: 0 0 28px rgba(196, 168, 130, 0.14);
+  transform: translateY(-1px);
+}
+
 .home-actions {
   align-items: center;
   display: flex;
   flex-direction: column;
   gap: 14px;
-  margin: 48px 0;
+  margin: 24px 0 32px;
   text-align: center;
 }
 
@@ -535,24 +601,140 @@ fieldset.field legend {
   color: var(--danger) !important;
 }
 
+.auth-panel {
+  backdrop-filter: blur(10px);
+  background: rgba(11, 13, 18, 0.72);
+  border: 1px solid rgba(196, 168, 130, 0.22);
+  border-radius: 18px;
+  display: grid;
+  gap: 10px;
+  margin: 0 auto;
+  max-width: 420px;
+  padding: 16px 18px;
+  text-align: left;
+  width: 100%;
+}
+
+.auth-panel-corner {
+  background: transparent;
+  border: none;
+  gap: 8px;
+  margin: 0;
+  max-width: none;
+  padding: 0;
+  width: auto;
+}
+
+.auth-corner-trigger {
+  backdrop-filter: blur(8px);
+  background: rgba(11, 13, 18, 0.72);
+  border: 1px solid rgba(196, 168, 130, 0.28);
+  border-radius: 999px;
+  box-shadow: none;
+  color: rgba(196, 168, 130, 0.92);
+  cursor: pointer;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  padding: 8px 14px;
+  transform: none;
+}
+
+.auth-corner-trigger:hover:not(:disabled) {
+  background: rgba(196, 168, 130, 0.12);
+  box-shadow: none;
+  transform: none;
+}
+
+.auth-corner-trigger-logged {
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.auth-corner-dropdown {
+  backdrop-filter: blur(12px);
+  background: rgba(11, 13, 18, 0.9);
+  border: 1px solid rgba(196, 168, 130, 0.22);
+  border-radius: 16px;
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  width: min(300px, calc(100vw - 32px));
+}
+
+.auth-panel-link {
+  font-size: 12px;
+  justify-self: start;
+  padding: 0;
+}
+
+.auth-panel-title {
+  color: var(--accent-strong);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+.auth-panel-copy,
+.auth-panel-hint {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.auth-panel-form {
+  display: grid;
+  gap: 10px;
+}
+
+.auth-panel-btn {
+  width: 100%;
+}
+
+.auth-panel-message {
+  color: var(--accent);
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.auth-panel-message.error,
+.home-sync-error {
+  color: var(--danger);
+  text-align: center;
+}
+
+.home-loading {
+  align-items: center;
+  justify-content: center;
+}
+
+.primary-glow:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
 @media (min-width: 820px) {
   .app-shell:not(.immersive-home) {
     padding: 24px;
   }
 
-  .chat-screen,
+  .chat-screen {
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    height: calc(100svh - 48px);
+    overflow: hidden;
+  }
+
   .form-screen {
     border: 1px solid var(--line);
     border-radius: 24px;
     box-shadow: var(--shadow);
-    overflow: hidden;
-  }
-
-  .chat-screen {
-    height: calc(100svh - 48px);
-  }
-
-  .form-screen {
     max-height: calc(100svh - 48px);
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 }
